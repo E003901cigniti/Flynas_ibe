@@ -20,14 +20,19 @@ public class BookingPageLocators extends ActionEngine{
 	public static By alertText = By.xpath("//div[@class='modal-body']/div");
 	public static By overlay = By.xpath("//class[contains(text(),'overlay')]");
 	public static By faresumrypls = By.xpath("//span[contains(Text(),'Extra')]/../span[2]/a");
-	
+	public static By backToHomeBtn = By.xpath("//a[contains(text(),'Back to homepage')]");
 	//login page
 	public static By email = By.xpath("//input[@name='iptid']");
 	public static By password = By.xpath("//input[@name='iptpasswprd']");
 	public static By login_btn = By.xpath("//button[@type='submit']");
 	public static By JoinNow = By.xpath("//a[contains(text(),'Join now')]");
 	public static By here = By.xpath("//a[contains(text(),' here')]");
-	
+	//added for insurance fees
+		public static By otherfeeinSummaryExpand = By.xpath("//h3[contains(text(),'Summary ')]/following::span[contains(text(),'Other Fees')]/../span/a");
+		public static By insuranceFee = By.xpath("//h3[contains(text(),'Summary ')]/following::span[contains(text(),'Insurance')]");
+		public static By insuranceFeeAmount = By.xpath("//span[contains(text(),'Insurance')]/following-sibling::span");
+		public static By insuranceFeeText=By.xpath("//div[@class='insurance-container']//input[@name='insuranceOption' and @value='yes']/..");
+
 	//booking page &Member dashboard
 	public static By manageMyBookings(String PNR){
 		return By.xpath("//span[text()='"+PNR+"']/following::a[1]");
