@@ -34,8 +34,11 @@ public class TC18_corporateLoginRToneAdultCancelFlight extends BookingPageFlow{
 			String[] Credentials = pickCredentials("CorporateCreds");
 			String username =Credentials[0];
 			String password =Credentials[1];
+			//click back to home button in case of error 500
+			clickBackToHomeButton();
 			
-			click(BookingPageLocators.corporatelogin_lnk, "Login");
+			waitForVisibilityOfElement(BookingPageLocators.corporatelogin_lnk, "Corporate Login");	
+			click(BookingPageLocators.corporatelogin_lnk, "Corporate Login");
 			switchtoChildWindow();
 			login(username,password);
 			inputBookingDetails(triptype,origin, dest, deptdate , "", "", rtrndate,adult, child, infant,"","","");

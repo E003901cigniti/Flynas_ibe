@@ -36,6 +36,10 @@ public class TC04_d_oneWayExtraIntlMutiPaxCheckinFail extends BookingPageFlow{
 			String username =Credentials[0];
 			String password =Credentials[1];
 			String lastname =Credentials[3];
+			//click back to home button in case of error 500
+			clickBackToHomeButton();
+			
+			waitForVisibilityOfElement(BookingPageLocators.login_lnk, "Login");	
 			click(BookingPageLocators.login_lnk, "Login");
 			switchtoChildWindow();
 			login(username,password);
@@ -54,6 +58,7 @@ public class TC04_d_oneWayExtraIntlMutiPaxCheckinFail extends BookingPageFlow{
 			
 			Baggage_Extra(tripType);
 			clickContinueBtn();
+			chooseInsurance("Add");
 			selectSeat(SelectSeat, bookingtype);
 			//selectSeat(SelectSeat,bookingtype);
 			payment(paymenttype,"");

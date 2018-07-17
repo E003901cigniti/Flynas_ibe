@@ -57,7 +57,7 @@ public class TC64_EmpLoginFriendsBookingCancellationLimitValidation extends Book
 			TestEngine.testDescription.put(HtmlReportSupport.tc_name, "Verify Friends booking");
 			
 			String	deptdate = pickDate(deptDate);
-			
+		
 			LoginPg.SelectEmployeelogin();
 			switchtoChildWindow();
 			LoginPg.login(username,password);

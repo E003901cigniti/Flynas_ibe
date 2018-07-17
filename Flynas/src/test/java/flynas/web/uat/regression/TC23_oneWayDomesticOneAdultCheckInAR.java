@@ -27,7 +27,10 @@ public class TC23_oneWayDomesticOneAdultCheckInAR extends BookingPageFlow{
 			TestEngine.testDescription.put(HtmlReportSupport.tc_name, Description);
 			deptDate = pickDate(deptDate);
 			String 	rtrndate = pickDate(retdate);
+			//click back to home button in case of error 500
+			clickBackToHomeButton();
 			
+			waitForVisibilityOfElement(BookingPageLocators.Arabic_pdctn_AR("العربية"), "Arabic Language");	
 			click(BookingPageLocators.Arabic_pdctn_AR("العربية"), "Arabic Language");
 			inputBookingDetails_Arabic(tripType,origin, dest, deptDate , origin2, departure2, rtrndate,Adult, Child, infant,"","","");
 			selectClass(strBookingClass, bundle);

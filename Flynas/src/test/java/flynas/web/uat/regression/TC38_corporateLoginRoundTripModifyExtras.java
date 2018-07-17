@@ -35,7 +35,10 @@ public class TC38_corporateLoginRoundTripModifyExtras extends BookingPageFlow{
 			String[] Credentials = pickCredentials("CorporateCreds");
 			String username =Credentials[0];
 			String password =Credentials[1];
+			//click back to home button in case of error 500
+			clickBackToHomeButton();
 			driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+			waitForVisibilityOfElement(BookingPageLocators.corporatelogin_lnk, "Corporate Login");	
 			click(BookingPageLocators.corporatelogin_lnk, "Login");
 			switchtoChildWindow();
 			login(username,password);

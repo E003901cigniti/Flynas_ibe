@@ -42,8 +42,11 @@ public class TC05_onewaydomestic8adultsBookingCheckin extends BookingPageFlow {
 					String username =Credentials[0];
 					String password =Credentials[1];
 					String lastname = Credentials[3];
-					
+					//click back to home button in case of error 500
+					clickBackToHomeButton();
+										
 					//User Login
+					waitForVisibilityOfElement(BookingPageLocators.login_lnk, "Login");	
 					click(BookingPageLocators.login_lnk, "Login");
 					switchtoChildWindow();
 					login(username,password);

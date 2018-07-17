@@ -35,7 +35,7 @@ public class TC01_f_VerifyAlertChildRegistrationNBooking extends BookingPageFlow
 			MemberRegistrationPage memberRegisterPg = new MemberRegistrationPage();
 			MemberDashboard memberdb = new MemberDashboard();
 			String deptDate = pickDate(deptdate);
-			String retdate = pickDate(retrndate);
+			String retdate = pickDate(retrndate);		
 			
 			//navigating to login page
 			util.clickLogin();
@@ -48,7 +48,7 @@ public class TC01_f_VerifyAlertChildRegistrationNBooking extends BookingPageFlow
 			//Selecting a fare class
 			selectClass(BookingClass, bundle);
 			clickContinueBtn();
-			
+			upSellPopUpAction("Continue");
 			//Clicking continue button on Passenger details page
 			continueOnPassengerDetails();
 			util.VerifyAlertMessage("mandatory fields");

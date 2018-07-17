@@ -36,7 +36,10 @@ public class TC59_RTIntlReturningLegMMBChangedateSeatsExtrasBaggageLounge extend
 			String username =Credentials[0];
 			String password =Credentials[1];
 			String lastname =Credentials[3];
+			//click back to home button in case of error 500
+			clickBackToHomeButton();
 			
+			waitForVisibilityOfElement(BookingPageLocators.login_lnk, "Login");	
 			click(BookingPageLocators.login_lnk, "Login");
 			switchtoChildWindow();
 			login(username,password);
