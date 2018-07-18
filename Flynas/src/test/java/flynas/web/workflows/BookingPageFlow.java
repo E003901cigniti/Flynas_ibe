@@ -693,6 +693,7 @@ public class BookingPageFlow<RenderedWebElement> extends BookingPageLocators{
 						Reporter.SuccessReport("Verifing Remove Charity", "Successfully Removed");
 					}
 					clickContinueBtn();
+					
 					waitUtilElementhasAttribute(BookingPageLocators.body);
 				}else{
 					System.out.println("Charity is Disabled");
@@ -1122,7 +1123,7 @@ public class BookingPageFlow<RenderedWebElement> extends BookingPageLocators{
 			{
 				List<WebElement> paymentss = driver.findElements(BookingPageLocators.paymentType);
 				for(int i=0;i<paymentss.size();i++){
-					if(paymentss.get(i).getText().contains("Credit Card")
+					if(paymentss.get(i).getText().contains("Credit/Debit Card")
 					||paymentss.get(i).getText().contains("Kredi Kartı")
 					||paymentss.get(i).getText().contains("البطاقات الإئتمانية")){
 						paymentss.get(i).click();
@@ -1130,7 +1131,8 @@ public class BookingPageFlow<RenderedWebElement> extends BookingPageLocators{
 						break;
 					}
 				}
-				waitforElement(BookingPageLocators.cardNumber);
+				//waitforElement(BookingPageLocators.cardNumber);
+				waitForVisibilityOfElement(BookingPageLocators.cardNumber, "CardNumber");
 				type(BookingPageLocators.cardNumber,configProps.getProperty("cardNumber").trim(),"Card Number");
 				type(BookingPageLocators.cardName,configProps.getProperty("cardHolderName"),"Card Holder Name");
 				click(BookingPageLocators.expMonth,"Expiry Month");
@@ -4236,7 +4238,7 @@ public class BookingPageFlow<RenderedWebElement> extends BookingPageLocators{
 		}
 		
 		public void isFileDownloaded(String fileName) throws Throwable {
-			  File dir = new File("C:/Users/E003901/Downloads");
+			  File dir = new File("C:\\Users\\E003927\\Documents");
 			  File[] dirContents = dir.listFiles();
 			  flag = false;			
 			  for (int i = 0; i < dirContents.length; i++) {

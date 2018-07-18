@@ -37,6 +37,7 @@ public class TC31_anonymousVerifingBoardingPassVlues extends BookingPageFlow{
 			System.out.println(lastname);
 			Baggage_Extra(tripType);
 			clickContinueBtn();
+			chooseInsurance("Add");
 			selectSeat(SelectSeat,bookingtype);
 			payment(paymenttype,"");
 			String strpnr = getReferenceNumber();

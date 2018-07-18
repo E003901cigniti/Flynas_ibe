@@ -34,6 +34,7 @@ ExcelReader xls = new ExcelReader(configProps.getProperty("TestDataIBEUAT"),"FL_
 					String strLastName[] = inputPassengerDetails(strFlightType, strTotalPessenger, strNationality, strDocumentType, 
 							strDocumentNum, strNaSmile, strMobile, strEmail,"","","");
 					inputExtras(charity);
+					chooseInsurance("Add");
 					selectSeat(strSelectSeat, bookingtype);
 					payment(strPaymentType,"");
 					String strpnr = getReferenceNumber();
