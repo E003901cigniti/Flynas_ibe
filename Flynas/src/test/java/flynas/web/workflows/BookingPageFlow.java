@@ -4238,18 +4238,18 @@ public class BookingPageFlow<RenderedWebElement> extends BookingPageLocators{
 		}
 		
 		public void isFileDownloaded(String fileName) throws Throwable {
-			  File dir = new File(System.getenv("USERPROFILE")+"\\Documents");
-			  File[] dirContents = dir.listFiles();
-			  flag = false;			
-			  for (int i = 0; i < dirContents.length; i++) {
-			      if (dirContents[i].getName().equals(fileName)) {
+			File dir = new File(System.getenv("USERPROFILE")+"\\Downloads");
+			File[] dirContents = dir.listFiles();
+			flag = false;		
+			for (int i = 0; i < dirContents.length; i++) {
+			    if (dirContents[i].getName().equals(fileName)) {
 			          // File has been found, it can now be deleted:
 			          dirContents[i].delete();
 			          flag = true;
 			          Reporter.SuccessReport("Verifying file download", "File successfully Downloaded");
 			          break;
-			          }
-			      }
+			        }
+			    }
 			   if(flag== false){
 				  Reporter.failureReport("Verifying file download", "File not found in download path");
 			  }			     
