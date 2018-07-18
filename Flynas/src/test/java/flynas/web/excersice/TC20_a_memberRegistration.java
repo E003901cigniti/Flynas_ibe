@@ -26,6 +26,7 @@ public class TC20_a_memberRegistration extends BookingPageFlow{
 		try {
 			
 			TestEngine.testDescription.put(HtmlReportSupport.tc_name, "Bulk registration");
+		
 			//instantiating page objects
 			projectUtilities util = new projectUtilities();
 			LoginPage LoginPg = new LoginPage();
