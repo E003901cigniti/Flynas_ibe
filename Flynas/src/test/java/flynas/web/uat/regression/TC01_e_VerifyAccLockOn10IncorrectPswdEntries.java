@@ -38,7 +38,6 @@ public class TC01_e_VerifyAccLockOn10IncorrectPswdEntries extends BookingPageFlo
 			MemberRegistrationPage memberRegisterPg = new MemberRegistrationPage();
 			MyProfilePage profilePage = new MyProfilePage();
 			MemberDashboard memberdb = new MemberDashboard();
-			
 			//navigating to login page
 			util.clickLogin();
 			LoginPg.ClickJoinNow();

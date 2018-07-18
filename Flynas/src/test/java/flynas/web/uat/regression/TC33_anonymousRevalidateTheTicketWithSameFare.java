@@ -25,6 +25,7 @@ ExcelReader xls = new ExcelReader(configProps.getProperty("TestDataIBEUAT"),"FL_
 					String description = "Revalidate the ticket with same fare";
 					TestEngine.testDescription.put(HtmlReportSupport.tc_name, description);
 					String deptdate = pickDate(strDepatureDate);
+				
 					inputBookingDetails(strTripType, strOrigin, strDestination, deptdate,origin2, departure2,strReturnDate,
 							strAdultCount, strChildCount, strInfantCount, strPromo,Currency,strPaymentType);
 					selectClass(strBookingClass, bundle);
@@ -33,6 +34,7 @@ ExcelReader xls = new ExcelReader(configProps.getProperty("TestDataIBEUAT"),"FL_
 					String strLastName[] = inputPassengerDetails(strFlightType, strTotalPessenger, strNationality, strDocumentType, 
 							strDocumentNum, strNaSmile, strMobile, strEmail,"","","");
 					inputExtras(charity);
+					chooseInsurance("Add");
 					selectSeat(strSelectSeat, bookingtype);
 					payment(strPaymentType,"");
 					String strpnr = getReferenceNumber();

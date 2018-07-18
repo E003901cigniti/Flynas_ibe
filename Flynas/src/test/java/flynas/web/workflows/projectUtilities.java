@@ -17,20 +17,26 @@ import com.ctaf.support.ExcelReader;
 import com.ctaf.utilities.Reporter;
 
 import flynas.web.testObjects.BookingPageLocators;
+import flynas.web.workflows.BookingPageFlow;
 
 public class projectUtilities<RenderedWebElement> extends BookingPageLocators {
+	BookingPageFlow<RenderedWebElement> bookingPageFlow=new BookingPageFlow<RenderedWebElement>();
 	
 	public void waitforpageload() throws InterruptedException{
 		waitUtilElementhasAttribute(BookingPageLocators.body);	
 	}
 	
 	public void clickLogin() throws Throwable{
+		//click back to home button in case of error 500
+		bookingPageFlow.clickBackToHomeButton();
 		waitforpageload();
+		waitForVisibilityOfElement(BookingPageLocators.login_lnk, "Login");	
 		click(BookingPageLocators.login_lnk, "Login");
 	}
 	
 	public void logout() throws Throwable{
 		waitforpageload();
+		waitForVisibilityOfElement(BookingPageLocators.logout_lnk, "Logout");	
 		click(BookingPageLocators.logout_lnk, "Logout");
 	}
 	

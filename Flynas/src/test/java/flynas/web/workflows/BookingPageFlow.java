@@ -4238,7 +4238,7 @@ public class BookingPageFlow<RenderedWebElement> extends BookingPageLocators{
 		}
 		
 		public void isFileDownloaded(String fileName) throws Throwable {
-			  File dir = new File("C:\\Users\\E003927\\Documents");
+			  File dir = new File(System.getenv("USERPROFILE")+"\\Documents");
 			  File[] dirContents = dir.listFiles();
 			  flag = false;			
 			  for (int i = 0; i < dirContents.length; i++) {

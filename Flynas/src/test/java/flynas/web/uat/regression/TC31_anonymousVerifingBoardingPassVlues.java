@@ -28,6 +28,7 @@ public class TC31_anonymousVerifingBoardingPassVlues extends BookingPageFlow{
 			TestEngine.testDescription.put(HtmlReportSupport.tc_name, Description);
 			String deptdate = pickDate(deptDate);
 			
+		
 			inputBookingDetails(tripType, origin, dest, deptdate, origin2,departure2,retdate,Adult, Child, infant,promo,Currency,paymenttype);
 			selectClass(strBookingClass, bundle);
 			clickContinueBtn();
@@ -36,6 +37,7 @@ public class TC31_anonymousVerifingBoardingPassVlues extends BookingPageFlow{
 			System.out.println(lastname);
 			Baggage_Extra(tripType);
 			clickContinueBtn();
+			chooseInsurance("Add");
 			selectSeat(SelectSeat,bookingtype);
 			payment(paymenttype,"");
 			String strpnr = getReferenceNumber();

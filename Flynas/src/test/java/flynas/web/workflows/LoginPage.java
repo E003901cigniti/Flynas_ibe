@@ -10,7 +10,8 @@ import com.ctaf.utilities.Reporter;
 import flynas.web.testObjects.BookingPageLocators;
 
 public class LoginPage<RenderedWebElement> extends BookingPageLocators {
-	projectUtilities util = new projectUtilities();
+	projectUtilities<RenderedWebElement> util = new projectUtilities<RenderedWebElement>();
+	BookingPageFlow<RenderedWebElement> bookingPageFlow=new BookingPageFlow<RenderedWebElement>();
 	
 	public void WaittillPageLoad() throws InterruptedException{
 		waitUtilElementhasAttribute(BookingPageLocators.body);		
@@ -30,6 +31,8 @@ public class LoginPage<RenderedWebElement> extends BookingPageLocators {
 	
 	public void  SelectEmployeelogin() throws Throwable
 	{
+		//click back to home button in case of error 500
+		bookingPageFlow.clickBackToHomeButton();
 		WaittillPageLoad();
 		click(BookingPageLocators.emplogin_lnk, "Login");				
 	}
