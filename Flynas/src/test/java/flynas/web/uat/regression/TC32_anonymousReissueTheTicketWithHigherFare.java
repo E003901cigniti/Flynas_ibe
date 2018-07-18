@@ -32,11 +32,13 @@ public static ConfiguratorSupport configProps=new ConfiguratorSupport("config.pr
 					String description = "Reissue The Ticket With Higher Fare";
 					TestEngine.testDescription.put(HtmlReportSupport.tc_name, description);
 					String deptdate = pickDate(strDepatureDate);
+				
 					inputBookingDetails(strTripType, strOrigin, strDestination, deptdate,origin2, departure2,strReturnDate,
 							strAdultCount, strChildCount, strInfantCount, strPromo,Currency,strPaymentType);
 					
 					selectClass(bookingClass[0], bundle);
 					clickContinueBtn();
+					upSellPopUpAction("Continue");
 					String strLastName[] = inputPassengerDetails(strFlightType, strTotalPessenger, strNationality, strDocumentType, 
 							strDocumentNum, strNaSmile, strMobile, strEmail,"","","");
 					coninueOnBaggage();

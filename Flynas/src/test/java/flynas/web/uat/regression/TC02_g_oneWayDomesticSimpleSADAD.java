@@ -35,6 +35,10 @@ public class TC02_g_oneWayDomesticSimpleSADAD extends BookingPageFlow{
 			String username =Credentials[0];
 			System.out.println("Username :"+username);
 			String password =Credentials[1];
+			//click back to home button in case of error 500
+			clickBackToHomeButton();
+			
+			waitForVisibilityOfElement(BookingPageLocators.login_lnk, "Login");	
 			click(BookingPageLocators.login_lnk, "Login");
 			//switchtoChildWindow();
 			login(username,password);

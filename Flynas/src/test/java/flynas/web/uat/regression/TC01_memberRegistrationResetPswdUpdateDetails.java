@@ -37,7 +37,7 @@ public class TC01_memberRegistrationResetPswdUpdateDetails extends BookingPageFl
 		try {
 			
 			TestEngine.testDescription.put(HtmlReportSupport.tc_name, "Validate Member Login");
-				
+					
 			//navigating to login page
 			util.clickLogin();
 			LoginPg.ClickJoinNow();
@@ -68,7 +68,10 @@ public class TC01_memberRegistrationResetPswdUpdateDetails extends BookingPageFl
 		try {
 			
 			TestEngine.testDescription.put(HtmlReportSupport.tc_name, "Verifying reset password");
-						
+			//click back to home button in case of error 500
+			clickBackToHomeButton();
+			
+			waitForVisibilityOfElement(BookingPageLocators.login_lnk, "Login");				
 			click(BookingPageLocators.login_lnk, " Login");
 			switchtoChildWindow();
 			//Don't change this login to random pickup. 
