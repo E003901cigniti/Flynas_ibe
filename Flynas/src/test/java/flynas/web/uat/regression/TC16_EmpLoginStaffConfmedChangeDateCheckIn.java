@@ -36,9 +36,11 @@ public class TC16_EmpLoginStaffConfmedChangeDateCheckIn extends BookingPageFlow{
 			String username =Credentials[0];
 			String password =Credentials[1];
 			String lastname =Credentials[3];
+			//click back to home button in case of error 500
+			clickBackToHomeButton();
 			
-			
-			click(emplogin_lnk, "Employe Login");
+			waitForVisibilityOfElement(BookingPageLocators.emplogin_lnk, "Employee Login");	
+			click(emplogin_lnk, "Employee Login");
 			switchtoChildWindow();
 			login(username,password);
 			inputBookingDetails(triptype,origin, dest, deptdate, "", "", rtrndate,adult, child, infant,"","",paymentType);

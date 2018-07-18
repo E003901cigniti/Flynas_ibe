@@ -24,8 +24,7 @@ public class TC14_oneWayDomesticwithEuro extends BookingPageFlow{
 		try {
 			
 			TestEngine.testDescription.put(HtmlReportSupport.tc_name, Description);
-			String	deptdate = pickDate(deptDate);
-			
+			String	deptdate = pickDate(deptDate);		
 			inputBookingDetails(tripType, origin, dest, deptdate, origin2,departure2,retdate,Adult, Child, infant,promo,Currency,paymenttype);
 			selectClass(strBookingClass, bundle);
 			clickContinueBtn();

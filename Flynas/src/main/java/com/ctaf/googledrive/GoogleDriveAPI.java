@@ -79,8 +79,8 @@ public class GoogleDriveAPI {
 		*/
 		public static Credential authorize() throws IOException {
 		// Load client secrets.
-		String strPath=	"C:/Users/E003901/workspace/Flynas/src/main/java/com/ctaf/googledrive/client_secret.json";
-		//String strPath=	System.getProperty("user.dir")+"/src/main/java/com/ctaf/googledrive/client_secret.json";
+		//String strPath=	"C:/Users/E003901/workspace/Flynas/src/main/java/com/ctaf/googledrive/client_secret.json";
+		String strPath=	System.getProperty("user.dir")+"/src/main/java/com/ctaf/googledrive/client_secret.json";
 
 		InputStream in = new FileInputStream(strPath);
 		//Quickstart.class.getResourceAsStream(strPath);

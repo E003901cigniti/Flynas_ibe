@@ -29,6 +29,8 @@ public class TC35_b_AnonymousOwIntlEconomy_MMB_ModifyExtrasSeat extends BookingP
 					TestEngine.testDescription.put(HtmlReportSupport.tc_name, description);
 					String	deptdate = pickDate(strDepatureDate);
 					String	rtrndate = pickDate(strReturnDate);
+										
+						
 					inputBookingDetails(strTripType, strOrigin, strDestination, deptdate,origin2,departure2, rtrndate,
 							strAdultCount, strChildCount, strInfantCount, strPromo,Currency,strPaymentType);
 					selectClass(strBookingClass, bundle);

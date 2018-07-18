@@ -34,6 +34,10 @@ public class TC19_agencyLoginRToneAdultoneChild extends BookingPageFlow {
 			String username =Credentials[0];
 			String password =Credentials[1];
 			
+			//click back to home button in case of error 500
+			clickBackToHomeButton();
+			
+			waitForVisibilityOfElement(BookingPageLocators.agency_lnk, "Agency Login");	
 			click(BookingPageLocators.agency_lnk, "Agency Login");
 			switchtoChildWindow();
 			login(username,password);

@@ -28,6 +28,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import com.ctaf.dataDriver.Logger;
 import com.ctaf.googledrive.GoogleDriveAPI;
@@ -47,7 +48,9 @@ public class BookingPageFlow<RenderedWebElement> extends BookingPageLocators{
 	
 	public void  login(String username,String password) throws Throwable
 	{
-		
+		//click back to home button in case of error 500
+		clickBackToHomeButton();
+		waitForVisibilityOfElement(BookingPageLocators.email, "Email");
 		waitforElement(BookingPageLocators.email);
 		waitUtilElementhasAttribute(BookingPageLocators.body);
 		type(BookingPageLocators.email, username, "Email");
@@ -81,6 +84,9 @@ public class BookingPageFlow<RenderedWebElement> extends BookingPageLocators{
 	
 	public boolean inputBookingDetails(String tripType, String origin, String dest, String deptDate,
 			String origin2, String departure2, String retDate, String adults, String child, String infant, String promo,String Currency,String payment) throws Throwable{
+		//click back to home button in case of error 500
+		clickBackToHomeButton();
+		waitForVisibilityOfElement(BookingPageLocators.oneWay, "One Way visible");	
 		waitforElement(BookingPageLocators.oneWay);
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.invisibilityOfAllElements(driver.findElements(By.xpath("//div[@class='loading sk-wave']"))));
@@ -2082,6 +2088,7 @@ public class BookingPageFlow<RenderedWebElement> extends BookingPageLocators{
 			}
 			
 			clickContinueBtn();
+			upSellPopUpAction("Continue");
 			waitUtilElementhasAttribute(BookingPageLocators.body);						
 	}
 	
@@ -4034,7 +4041,7 @@ public class BookingPageFlow<RenderedWebElement> extends BookingPageLocators{
 			}
 		}
 		
-		public void coninueOnBaggage() throws Throwable{
+		/*public void coninueOnBaggage() throws Throwable{
 			waitforElement(BookingPageLocators.baggagetittle);
 			waitUtilElementhasAttribute(BookingPageLocators.body);
 			if(isElementDisplayedTemp(BookingPageLocators.baggagetittle)){
@@ -4054,7 +4061,124 @@ public class BookingPageFlow<RenderedWebElement> extends BookingPageLocators{
 					click(BookingPageLocators.No, "Travel insurance not selected");
 				clickContinueBtn();
 			}
-		}
+		}*/
+		
+		public void coninueOnBaggage() throws Throwable{
+
+            waitforElement(BookingPageLocators.baggagetittle);
+
+            waitUtilElementhasAttribute(BookingPageLocators.body);
+
+            if(isElementDisplayedTemp(BookingPageLocators.baggagetittle)){
+
+                  clickContinueBtn();
+
+                  chooseInsurance("Add");
+                  
+                  Thread.sleep(5000);
+                  
+                  //compareInsuranceDetailsInSummary();
+                  
+                  //clickContinueBtn();
+
+            }else{
+
+                  System.out.println("No Baggage page Available");
+
+            }
+
+     }
+
+    
+
+     public void chooseInsurance(String choice) throws Throwable{
+
+            Thread.sleep(5000);
+
+            if(isElementDisplayedTemp(BookingPageLocators.Add)==true)
+
+            {      if(choice.equalsIgnoreCase("Add")){
+            	 	click(BookingPageLocators.Add, "Travel insurance selected");
+            	 	Thread.sleep(7000);
+            	 	waitForVisibilityOfElement(BookingPageLocators.insuranceFeeText,"Insurance Fees Amount in Page");
+            	 	compareInsuranceDetailsInSummary();
+            	 	
+            	
+            }                       
+
+                  else{
+                	  click(BookingPageLocators.No, "Travel insurance not selected");
+                  }
+
+                     
+
+                  clickContinueBtn();
+
+            }
+
+     }
+     
+     public void compareInsuranceDetailsInSummary() throws Throwable{
+    	 waitForVisibilityOfElement(BookingPageLocators.insuranceFeeText,"Insurance Fees Amount in Page");
+    	 String insuranceFeesText=getText(BookingPageLocators.insuranceFeeText,"Insurance Fees Amount in Page");
+    	 System.out.println("Insurance fees Text in page->"+insuranceFeesText);
+    	 int iFeeBeginIndex=insuranceFeesText.indexOf("S");
+    	 System.out.println(iFeeBeginIndex);
+    	 int iFeeEndIndex=insuranceFeesText.indexOf("(");  
+    	 System.out.println(iFeeEndIndex);
+    	 System.out.println("End Index Character"+insuranceFeesText.charAt(iFeeEndIndex));
+    	 String insuranceFeesInPage=insuranceFeesText.substring(iFeeBeginIndex,iFeeEndIndex-1);
+    	 System.out.println("Insurance Fess In Page:"+insuranceFeesInPage);
+    	 
+    	 if(isElementDisplayedTemp(BookingPageLocators.otherfeeinSummaryExpand)==true){
+    		 click(BookingPageLocators.otherfeeinSummaryExpand, "Other fee section Expand");
+    		 
+    	 }
+    	 if(isElementDisplayedTemp(BookingPageLocators.insuranceFee)==true){
+    		 String insuranceFees=getText(BookingPageLocators.insuranceFeeAmount,"Insurance Fees Amount");
+    		 int iFeeSummaryEndIndex=insuranceFees.indexOf(".");
+    		 String insuranceFeesInSummary=insuranceFees.substring(0, iFeeSummaryEndIndex);
+    		 System.out.println("Insurance Fees In Summary->"+insuranceFeesInSummary);
+    		 Reporter.SuccessReport("Insurance Fees in Summary", "Insurance fees displayed");
+    		 System.out.println("Insurance Fees Amount in Summary is:"+insuranceFees);
+    		 Reporter.SuccessReport("Insurance Fees Amount in Summary is:"+insuranceFees, "Insurance fees amount displayed");
+    		 //Assert.assertEquals(insuranceFeesInPage, insuranceFeesInSummary);
+    		 
+    	 }
+    		 
+    		 
+    	 }
+            	   	  
+         
+    	 public void verifyInsuranceDetailsInSummary() throws Throwable{
+    	    	
+        	 
+        	 if(isElementDisplayedTemp(BookingPageLocators.otherfeeinSummaryExpand)==true){
+        		 click(BookingPageLocators.otherfeeinSummaryExpand, "Other fee section Expand");
+        		 
+        	 }
+        	 if(isElementDisplayedTemp(BookingPageLocators.insuranceFee)==true){
+        		 String insuranceFees=getText(BookingPageLocators.insuranceFeeAmount,"Insurance Fees Amount");
+        		 Reporter.SuccessReport("Insurance Fees in Summary", "Insurance fees displayed");
+        		 System.out.println("Insurance Fees Amount in Summary is:"+insuranceFees);
+        		 Reporter.SuccessReport("Insurance Fees Amount in Summary is:"+insuranceFees, "Insurance fees amount displayed");
+        		 //Assert.assertEquals(insuranceFeesInPage, insuranceFees);
+        		 
+        		 
+        	 }
+
+         
+
+  }
+
+    	 public  void clickBackToHomeButton() throws Throwable{
+    		 if(isElementDisplayedTemp(BookingPageLocators.backToHomeBtn)==true){
+    		 click(BookingPageLocators.backToHomeBtn, "Back To Home Button");
+    		 }
+    		 else{
+    		 System.out.println("Back To Home button not visible");
+    		 }
+    		 }
 		
 		public void closeOverlay() throws Throwable{
 			List<WebElement> frames = driver.findElements(By.tagName("iframe"));

@@ -40,7 +40,11 @@ public class TC17_RTChangeflightCheckIN extends BookingPageFlow {
 			String username =Credentials[0];
 			String password =Credentials[1];
 			String lastname =Credentials[3];
-		
+			
+			//click back to home button in case of error 500
+			clickBackToHomeButton();
+			
+			waitForVisibilityOfElement(BookingPageLocators.login_lnk, "Login");	
 			click(BookingPageLocators.login_lnk, "Login");
 			login(username,password);
 			inputBookingDetails(triptype,origin, dest, deptdate , "", "", rtrndate,adult, child, infant,"","","");

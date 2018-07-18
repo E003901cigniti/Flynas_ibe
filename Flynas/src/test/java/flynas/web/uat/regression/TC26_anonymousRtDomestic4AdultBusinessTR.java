@@ -26,7 +26,10 @@ public class TC26_anonymousRtDomestic4AdultBusinessTR extends BookingPageFlow{
 			TestEngine.testDescription.put(HtmlReportSupport.tc_name, Description);
 			String deptdate = pickDate(deptDate);
 			String 	rtrndate = pickDate(retdate);
+			//click back to home button in case of error 500
+			clickBackToHomeButton();
 			
+			waitForVisibilityOfElement(BookingPageLocators.Arabic_pdctn_AR("Türkçe"), "Tarkish Language");	
 			click(BookingPageLocators.Arabic_pdctn_AR("Türkçe"), "Tarkish Language");
 			inputBookingDetails_Tarkish(tripType,origin, dest, deptdate , origin2, departure2, rtrndate,Adult, Child, infant,"","");
 			selectClass(strBookingClass, bundle);
