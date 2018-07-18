@@ -38,6 +38,7 @@ public static ConfiguratorSupport configProps=new ConfiguratorSupport("config.pr
 					
 					selectClass(bookingClass[0], bundle);
 					clickContinueBtn();
+					upSellPopUpAction("Continue");
 					String strLastName[] = inputPassengerDetails(strFlightType, strTotalPessenger, strNationality, strDocumentType, 
 							strDocumentNum, strNaSmile, strMobile, strEmail,"","","");
 					coninueOnBaggage();
